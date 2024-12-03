@@ -12,7 +12,7 @@ export default function Product({ flower, addToCart }) {
     return (
         <div className="grid-item">
             <div className="card">
-                <img src={flower.img} alt={flower.name} />
+            <img src={require('../assets/image/'+flower.img)} alt={flower.name} />
                 <div className="card-body">
                     <h5 className="card-title">{flower.name}</h5>
                     <p>Price: ${flower.price}</p>
