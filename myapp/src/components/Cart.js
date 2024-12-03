@@ -1,25 +1,33 @@
-export default function Cart() {
-    
+export default function Cart({ cart }) {
+    const grandTotal = cart.reduce((total, item) => total + item.qty * item.price, 0);
+
     return (
         <div className="table-container">
             <h4 className="card-title">Cart</h4>
             <table>
                 <thead>
-
-                    <td>Product</td>
-                    <td>QTY</td>
-                    <td>Price</td>
-
+                    <tr>
+                        <th>Product</th>
+                        <th>QTY</th>
+                        <th>Price</th>
+                    </tr>
                 </thead>
-                {
-                    
-                }
-                <tr>
-                    <td >Grand Total : </td>
-                    <td colSpan={2}>Grand Total</td>
-                </tr>
+                <tbody>
+                    {cart.map(item => (
+                        <tr key={item.id}>
+                            <td>{item.name}</td>
+                            <td>{item.qty}</td>
+                            <td>${item.qty * item.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Grand Total:</td>
+                        <td colSpan="2">${grandTotal}</td>
+                    </tr>
+                </tfoot>
             </table>
-           
         </div>
     );
 }
